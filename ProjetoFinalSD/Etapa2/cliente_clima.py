@@ -34,8 +34,8 @@ def coleta_dados_api_climatica(estado):
     time.sleep(2)
     return {
         "estado": estado,
-        "temperatura_media_celsius": round(20 + len(estado) * 0.5 + time.time() % 5, 2),
-        "umidade_relativa_porcentagem": round(70 + time.time() % 10),
+        "temperatura_media_celsius": 25.2,
+        "umidade_relativa_porcentagem": 50,
         "condicao": "Parcialmente Nublado",
         "data_coleta": time.strftime("%Y-%m-%d %H:%M:%S")
     }
