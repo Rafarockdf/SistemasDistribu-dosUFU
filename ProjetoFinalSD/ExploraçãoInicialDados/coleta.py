@@ -1,9 +1,9 @@
 #%%
-
-import requests
-import time
-import threading
-import pandas as pd
+from modulos import pd
+from modulos import requests
+from modulos import time
+from modulos import threading
+from modulos import post
 #%%
 def coleta_nomes_cidades():
     url_ibge = 'https://servicodados.ibge.gov.br/api/v1/localidades/municipios'
