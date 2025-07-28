@@ -24,6 +24,8 @@ LEFT JOIN (SELECT DISTINCT id_municipio,nome  FROM `basedosdados.br_bd_diretorio
     ON dados.id_municipio = diretorio_id_municipio.id_municipio
 """
 
+
+
 query_clima = '''
 
 SELECT * FROM `basedosdados.br_inmet_bdmep.microdados` WHERE ano = 2024 LIMIT 1000

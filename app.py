@@ -4,6 +4,7 @@ from flask import Flask, Response
 from prometheus_client import Counter, Histogram
 from prometheus_flask_exporter import PrometheusMetrics
 
+
 # Cria a aplicação Flask
 app = Flask(__name__)
 

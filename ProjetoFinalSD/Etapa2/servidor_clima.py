@@ -6,6 +6,12 @@ import time
 HOST = '127.0.0.1'  # Endereço IP do servidor (localhost)
 PORT = 65432        # Porta que o servidor estará escutando
 
+
+
+
+
+
+
 def handle_client(conn, addr):
     """
     Lida com a comunicação de um cliente conectado.

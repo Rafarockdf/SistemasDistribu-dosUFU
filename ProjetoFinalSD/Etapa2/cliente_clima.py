@@ -5,6 +5,15 @@ import socket
 import pandas as pd
 import json
 
+
+
+
+
+
+
+
+
+
 # --- Funções de Coleta de Dados ---
 
 def coleta_nomes_cidades():
