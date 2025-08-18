@@ -3,13 +3,14 @@ import json
 import pandas as pd
 import requests
 from shapely.geometry import shape
+from tqdm import tqdm  # Importa a barra de progresso
 
 producer = KafkaProducer(
     bootstrap_servers='localhost:9092',
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 
-# Função coleta cidades (já implementada por você)
+# Função coleta cidades
 def coleta_nomes_cidades():
     """
     Busca a lista de municípios do IBGE e organiza por cidade e estado.
@@ -42,7 +43,8 @@ def coleta_lat_lon(id_cidade):
 
 cidades = coleta_nomes_cidades()
 
-for _, row in cidades.iterrows():
+# Loop com barra de progresso
+for _, row in tqdm(cidades.iterrows(), total=len(cidades), desc="Enviando cidades para Kafka"):
     lat, lon = coleta_lat_lon(row["id"])
     msg = {
         "tipo": "CadastrarCidade",
@@ -55,5 +57,6 @@ for _, row in cidades.iterrows():
         }
     }
     producer.send("cidades_raw", msg)
+
 producer.flush()
 print("✅ Mensagens enviadas ao Kafka")
