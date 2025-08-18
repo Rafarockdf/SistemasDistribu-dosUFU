@@ -1,9 +1,6 @@
 #%%
-from modulos import pd
-from modulos import requests
-from modulos import time
-from modulos import threading
-from modulos import post
+import requests
+import pandas as pd
 
 
 #%%
@@ -40,7 +37,7 @@ def main():
     bloco = municipios[mask]
     bloco2 = bloco[0:21]
     dados = coleta_dados_api_climatica('Monte Carmelo')
-    return dados
+    return dados['name']['Monte Carmelo']
  #%%   
 main()
 # %%
