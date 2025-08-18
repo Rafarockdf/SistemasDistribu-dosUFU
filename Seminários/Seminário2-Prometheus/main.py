@@ -39,7 +39,6 @@ LATENCIA_SUMARIO = Summary(
 INFO_APP = Info(
     'meuapp_info',
     'Informações sobre a aplicação'
-    info=['versão','ambiente']
 )
 
 # Enum: Estado da aplicação
