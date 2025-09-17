@@ -1,7 +1,14 @@
 #%%
 import requests
 import pandas as pd
-
+#%%
+def coleta_dados_api_climatica(cidade):
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade},BR&appid=c41811d0e4a94530079d18a69e9a1c5c&units=metric"
+    resposta = requests.get(url)
+    if resposta.status_code != 200:
+        print(f"Erro ao buscar dados de {cidade}: {resposta.status_code} - {resposta.json().get('message')}")
+        return None
+    return resposta.json()
 
 #%%
 def coleta_nomes_cidades():
@@ -18,17 +25,7 @@ def coleta_nomes_cidades():
         return lista_municipios
     except(TypeError):
         print( f'Erro: {TypeError}')
-    return lista_municipios
-
-#%% 
-def coleta_dados_api_climatica(cidade):
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade},BR&appid=c41811d0e4a94530079d18a69e9a1c5c&units=metric"
-    resposta = requests.get(url)
-    if resposta.status_code != 200:
-        print(f"Erro ao buscar dados de {cidade}: {resposta.status_code} - {resposta.json().get('message')}")
-        return None
-    return resposta.json()
-
+    return lista_municipios 
  #%%    
 def main():
     cidades = coleta_nomes_cidades()
@@ -37,7 +34,7 @@ def main():
     bloco = municipios[mask]
     bloco2 = bloco[0:21]
     dados = coleta_dados_api_climatica('Monte Carmelo')
-    return dados['name']['Monte Carmelo']
+    return dados['name']
  #%%   
 main()
 # %%
